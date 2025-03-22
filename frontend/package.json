@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "backend": "poetry run flask run --reload", 
+    "backend": "poetry run flask run --reload",
     "frontend": "npx tailwindcss -i ./static/input.css -o ./dist/output.css --watch",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
@@ -14,5 +14,8 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.0.15",
     "tailwindcss": "^4.0.15"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }
