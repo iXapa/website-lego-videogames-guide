@@ -1,15 +1,22 @@
+import os
 from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 # Importing models after db initialization to avoid circular imports
-from models import Videogame
+from models import db, Videogame
 
-# Initialize Flask app and database
-app = Flask(__name__, static_folder="../frontend/static", template_folder="../frontend/templates")
+# Get the absolute path to the frontend/templates directory
+frontend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend'))
+
+app = Flask(__name__, static_folder=os.path.join(frontend_dir, 'static'), template_folder=os.path.join(frontend_dir, 'templates'))
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'  # SQLite for simplicity
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'supergeheim'
 
-db = SQLAlchemy(app)
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()  # Create the tables in the database
 
 
 @app.route('/')
@@ -20,6 +27,4 @@ def index():
 
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()  # Create the tables in the database
     app.run(debug=True)

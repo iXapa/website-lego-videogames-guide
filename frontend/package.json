@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "backend": "poetry run flask run --reload",
+    "backend": "FLASK_APP=../backend/app.py poetry run flask run --reload",
     "frontend": "npx tailwindcss -i ./static/input.css -o ./dist/output.css --watch",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
