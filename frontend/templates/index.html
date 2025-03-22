@@ -1,0 +1,11 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-4xl font-bold text-center mt-6">Videogame List</h1>
+<ul class="list-disc ml-6 mt-4">
+    {% for game in videogames %}
+    <li class="mt-2">{{ game.name }} - Released: {{ game.release_date }} - Theme: {{ game.theme }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
