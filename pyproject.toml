@@ -15,7 +15,7 @@ dependencies = [
     "types-flask (>=1.1.6,<2.0.0)",
     "email-validator (>=2.2.0,<3.0.0)",
     "sqlalchemy (>=2.0.39,<3.0.0)",
-    "flask-bcrypt (>=1.0.1,<2.0.0)"
+    "flask-bcrypt (>=1.0.1,<2.0.0)",
 ]
 
 

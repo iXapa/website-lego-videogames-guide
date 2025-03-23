@@ -1,8 +1,6 @@
 import os
 from flask import Flask, render_template
-# from flask_sqlalchemy import SQLAlchemy
-# Importing models after db initialization to avoid circular imports
-from models import db, Videogame
+from models import db, Videogame # type: ignore
 
 # Get the absolute path to the frontend/templates directory
 frontend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend'))
@@ -22,8 +20,8 @@ with app.app_context():
 @app.route('/')
 def index():
     # Query all videogames from the database
-    videogames = Videogame.query.all()
-    return render_template('index.html', videogames=videogames)
+    lego_games = Videogame.query.all()
+    return render_template('index.html', lego_games=lego_games)
 
 
 if __name__ == "__main__":
